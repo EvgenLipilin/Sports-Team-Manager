@@ -17,6 +17,7 @@
 		CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BC225EC6210005C4F85 /* Player.xcdatamodeld */; };
 		CFBF3BCA25EC67B9005C4F85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */; };
 		CFBF3BCF25EC67C8005C4F85 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */; };
+		CFBF3BD425EC6846005C4F85 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BD325EC6846005C4F85 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		CFBF3BC325EC6210005C4F85 /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
 		CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		CFBF3BD325EC6846005C4F85 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		CFBF3BC125EC61FD005C4F85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CFBF3BD325EC6846005C4F85 /* CoreDataManager.swift */,
 				CFBF3BC225EC6210005C4F85 /* Player.xcdatamodeld */,
 			);
 			path = Model;
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFBF3BD425EC6846005C4F85 /* CoreDataManager.swift in Sources */,
 				CFBF3B8E25EC5D07005C4F85 /* ViewController.swift in Sources */,
 				CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */,
 				CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */,
