@@ -18,6 +18,7 @@
 		CFBF3BCA25EC67B9005C4F85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */; };
 		CFBF3BCF25EC67C8005C4F85 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */; };
 		CFBF3BD425EC6846005C4F85 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BD325EC6846005C4F85 /* CoreDataManager.swift */; };
+		CFBF3BDC25EC6A0F005C4F85 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BDB25EC6A0F005C4F85 /* PlayerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		CFBF3BD325EC6846005C4F85 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CFBF3BDB25EC6A0F005C4F85 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */,
-				CFBF3BC825EC679F005C4F85 /* New Group */,
+				CFBF3BC825EC679F005C4F85 /* View */,
 				CFBF3BC125EC61FD005C4F85 /* Model */,
 				CFBF3B8D25EC5D07005C4F85 /* ViewController.swift */,
 				CFBF3B8F25EC5D07005C4F85 /* Main.storyboard */,
@@ -144,13 +146,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CFBF3BC825EC679F005C4F85 /* New Group */ = {
+		CFBF3BC825EC679F005C4F85 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */,
 				CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */,
+				CFBF3BDB25EC6A0F005C4F85 /* PlayerCell.swift */,
 			);
-			path = "New Group";
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +288,7 @@
 			files = (
 				CFBF3BD425EC6846005C4F85 /* CoreDataManager.swift in Sources */,
 				CFBF3B8E25EC5D07005C4F85 /* ViewController.swift in Sources */,
+				CFBF3BDC25EC6A0F005C4F85 /* PlayerCell.swift in Sources */,
 				CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */,
 				CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */,
 				CFBF3BCA25EC67B9005C4F85 /* MainViewController.swift in Sources */,
