@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Club" representedClassName="Club" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="club" inverseEntity="Player"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fullname" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="inPlay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
+        <relationship name="club" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Club" inverseName="player" inverseEntity="Club"/>
+        <fetchedProperty name="benchProperty" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Player" predicateString="inPlay == false"/>
+        </fetchedProperty>
+        <fetchedProperty name="inPlayProperty" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Player" predicateString="inPlay == true"/>
+        </fetchedProperty>
+    </entity>
+    <elements>
+        <element name="Player" positionX="-63" positionY="-18" width="128" height="206"/>
+        <element name="Club" positionX="181.0929565429688" positionY="82.00607299804688" width="128" height="59"/>
+    </elements>
+</model>

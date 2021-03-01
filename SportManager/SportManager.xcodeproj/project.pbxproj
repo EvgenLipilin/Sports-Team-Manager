@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */; };
-		CFBF3B8C25EC5D07005C4F85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3B8B25EC5D07005C4F85 /* SceneDelegate.swift */; };
 		CFBF3B8E25EC5D07005C4F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3B8D25EC5D07005C4F85 /* ViewController.swift */; };
 		CFBF3B9125EC5D07005C4F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF3B8F25EC5D07005C4F85 /* Main.storyboard */; };
 		CFBF3B9325EC5D0A005C4F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF3B9225EC5D0A005C4F85 /* Assets.xcassets */; };
 		CFBF3B9625EC5D0A005C4F85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFBF3B9425EC5D0A005C4F85 /* LaunchScreen.storyboard */; };
 		CFBF3BA125EC5D0B005C4F85 /* SportManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BA025EC5D0B005C4F85 /* SportManagerTests.swift */; };
 		CFBF3BAC25EC5D0B005C4F85 /* SportManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BAB25EC5D0B005C4F85 /* SportManagerUITests.swift */; };
+		CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BC225EC6210005C4F85 /* Player.xcdatamodeld */; };
+		CFBF3BCA25EC67B9005C4F85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */; };
+		CFBF3BCF25EC67C8005C4F85 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		CFBF3B8625EC5D07005C4F85 /* SportManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CFBF3B8B25EC5D07005C4F85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CFBF3B8D25EC5D07005C4F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CFBF3B9025EC5D07005C4F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFBF3B9225EC5D0A005C4F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		CFBF3BA725EC5D0B005C4F85 /* SportManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF3BAB25EC5D0B005C4F85 /* SportManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportManagerUITests.swift; sourceTree = "<group>"; };
 		CFBF3BAD25EC5D0B005C4F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBF3BC325EC6210005C4F85 /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
+		CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */,
-				CFBF3B8B25EC5D07005C4F85 /* SceneDelegate.swift */,
+				CFBF3BC825EC679F005C4F85 /* New Group */,
+				CFBF3BC125EC61FD005C4F85 /* Model */,
 				CFBF3B8D25EC5D07005C4F85 /* ViewController.swift */,
 				CFBF3B8F25EC5D07005C4F85 /* Main.storyboard */,
 				CFBF3B9225EC5D0A005C4F85 /* Assets.xcassets */,
@@ -126,6 +131,23 @@
 				CFBF3BAD25EC5D0B005C4F85 /* Info.plist */,
 			);
 			path = SportManagerUITests;
+			sourceTree = "<group>";
+		};
+		CFBF3BC125EC61FD005C4F85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFBF3BC225EC6210005C4F85 /* Player.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFBF3BC825EC679F005C4F85 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */,
+				CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +282,9 @@
 			files = (
 				CFBF3B8E25EC5D07005C4F85 /* ViewController.swift in Sources */,
 				CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */,
-				CFBF3B8C25EC5D07005C4F85 /* SceneDelegate.swift in Sources */,
+				CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */,
+				CFBF3BCA25EC67B9005C4F85 /* MainViewController.swift in Sources */,
+				CFBF3BCF25EC67C8005C4F85 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +611,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CFBF3BC225EC6210005C4F85 /* Player.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CFBF3BC325EC6210005C4F85 /* Player.xcdatamodel */,
+			);
+			currentVersion = CFBF3BC325EC6210005C4F85 /* Player.xcdatamodel */;
+			path = Player.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CFBF3B7E25EC5D07005C4F85 /* Project object */;
 }
