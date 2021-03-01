@@ -22,7 +22,10 @@ class PlayerViewController: UIViewController {
     lazy var avatarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.heightAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
         imageView.backgroundColor = .darkGray
         imageView.image = selectedImage
         return imageView
@@ -226,7 +229,8 @@ class PlayerViewController: UIViewController {
                                      avatarImage.heightAnchor.constraint(equalToConstant: 100),
                                      
                                      uploadImageButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor,constant: 20),
-                                     uploadImageButton.centerXAnchor.constraint(equalTo: avatarImage.centerXAnchor,constant: 20),
+                                     uploadImageButton.centerXAnchor.constraint(equalTo: avatarImage.centerXAnchor),
+                                     
                                      
                                      nameTextField.topAnchor.constraint(equalTo: uploadImageButton.bottomAnchor, constant: 20),
                                      nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),

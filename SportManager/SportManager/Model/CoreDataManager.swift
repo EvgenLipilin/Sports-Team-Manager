@@ -48,7 +48,7 @@ class CoreDataManager {
         
         return object
     }
-
+    
     func delete(object: NSManagedObject) {
         let context = getContext()
         context.delete(object)

@@ -26,7 +26,6 @@ class PlayerCell: UITableViewCell {
         avatar.contentMode = .scaleAspectFill
         avatar.backgroundColor = .systemGray
         avatar.image = #imageLiteral(resourceName: "man")
-        avatar.layer.cornerRadius =   avatar.frame.size.width / 2
         avatar.clipsToBounds = true
         return avatar
     }()
@@ -48,7 +47,6 @@ class PlayerCell: UITableViewCell {
     let teamDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Text"
         return label
     }()
     
@@ -128,7 +126,7 @@ class PlayerCell: UITableViewCell {
         number.text = "\(model.number)"
         avatar.image = UIImage(data: model.image ?? Data())
         fullName.text = model.fullName
-        teamDescriptionLabel.text = model.club?.name
+        teamDescriptionLabel.text = model.team
         positionDescriptionLabel.text = model.position
         ageDescriptionLabel.text = "\(model.age)"
         nationalityDescriptionLabel.text = model.nationality
@@ -194,5 +192,5 @@ class PlayerCell: UITableViewCell {
                                       
                                       ageDescriptionLabel.topAnchor.constraint(equalTo: age.topAnchor),
                                       ageDescriptionLabel.leadingAnchor.constraint(equalTo: teamDescriptionLabel.leadingAnchor)]))
-}
+    }
 }
