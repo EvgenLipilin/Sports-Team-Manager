@@ -67,8 +67,9 @@ class MainViewController: UIViewController {
     
     @objc private func playerStatusSegmentControlPressed(){
         playerArray.removeAll()
-        tableView.reloadData()
         fetchData(predicate: selectedPredicate)
+        tableView.reloadData()
+        
     }
     
     @objc private func pressedAddPlayer() {

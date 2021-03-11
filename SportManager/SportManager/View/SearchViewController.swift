@@ -130,6 +130,7 @@ class SearchViewController: UIViewController {
         textField.placeholder = "Name contains"
         textField.textContentType = .name
         textField.borderStyle = .roundedRect
+        textField.delegate = self
         return textField
     }()
     
@@ -139,6 +140,7 @@ class SearchViewController: UIViewController {
         textField.placeholder = "Age"
         textField.textContentType = .name
         textField.borderStyle = .roundedRect
+        textField.delegate = self
         return textField
     }()
    

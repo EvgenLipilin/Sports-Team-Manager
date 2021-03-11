@@ -9,12 +9,15 @@ import CoreData
 
 final class CoreDataManager {
     
+    // MARK: - Private Properties
     private let modelName: String
     
+    // MARK: - Initializers
     init(modelName: String) {
         self.modelName = modelName
     }
     
+    // MARK: - CoreData Stack initialisation
     
     lazy var persistentContainer: NSPersistentContainer = {
         
@@ -69,7 +72,7 @@ final class CoreDataManager {
             request = NSFetchRequest(entityName: entityName)
         }
         
-        let playerSortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        let playerSortDescriptor = NSSortDescriptor(key: "position", ascending: true)
         
         request.predicate = predicate
         request.sortDescriptors = [playerSortDescriptor]
@@ -77,7 +80,7 @@ final class CoreDataManager {
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
         
         do {
-            
+//            fetchedResult = try context.fetch(request)
             try controller.performFetch()
             
         } catch {
@@ -85,6 +88,12 @@ final class CoreDataManager {
         }
         
         return controller
+    }
+    
+    func replacePlayer(player: Player, status: Bool) {
+        let context = getContext()
+        player.inPlay = !status
+        save(context: context)
     }
     
 }

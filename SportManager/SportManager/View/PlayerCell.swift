@@ -203,8 +203,6 @@ class PlayerCell: UITableViewCell {
                                       ageDescriptionLabel.leadingAnchor.constraint(equalTo: teamDescriptionLabel.leadingAnchor),
                                       
                                       playerStatusLabel.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor),
-                                      playerStatusLabel.centerYAnchor.constraint(equalTo: fullName.centerYAnchor),
-        
-        ]))
+                                      playerStatusLabel.centerYAnchor.constraint(equalTo: fullName.centerYAnchor),]))
     }
 }
