@@ -79,6 +79,13 @@ class PlayerCell: UITableViewCell {
         return label
     }()
     
+    let playerStatusLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        return label
+    }()
+    
     let age: UILabel = {
         let age = UILabel()
         age.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +129,7 @@ class PlayerCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createCell(model: Player){
+    func createCell(_ model: Player){
         number.text = "\(model.number)"
         avatar.image = UIImage(data: model.image ?? Data())
         fullName.text = model.fullName
@@ -130,11 +137,13 @@ class PlayerCell: UITableViewCell {
         positionDescriptionLabel.text = model.position
         ageDescriptionLabel.text = "\(model.age)"
         nationalityDescriptionLabel.text = model.nationality
+        playerStatusLabel.text = model.inPlay ? "In Play" : "Bench"
+        
         
     }
     
     func setupLayout() {
-        [number,fullName,avatar,mainStack,leftStack,rightStack,team,nationality,position,age,teamDescriptionLabel,nationalityDescriptionLabel,positionDescriptionLabel,ageDescriptionLabel].forEach { (element) in
+        [number,playerStatusLabel,fullName,avatar,mainStack,leftStack,rightStack,team,nationality,position,age,teamDescriptionLabel,nationalityDescriptionLabel,positionDescriptionLabel,ageDescriptionLabel].forEach { (element) in
             addSubview(element)
         }
         let inset: CGFloat = 10
@@ -191,6 +200,11 @@ class PlayerCell: UITableViewCell {
                                       positionDescriptionLabel.leadingAnchor.constraint(equalTo: teamDescriptionLabel.leadingAnchor),
                                       
                                       ageDescriptionLabel.topAnchor.constraint(equalTo: age.topAnchor),
-                                      ageDescriptionLabel.leadingAnchor.constraint(equalTo: teamDescriptionLabel.leadingAnchor)]))
+                                      ageDescriptionLabel.leadingAnchor.constraint(equalTo: teamDescriptionLabel.leadingAnchor),
+                                      
+                                      playerStatusLabel.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor),
+                                      playerStatusLabel.centerYAnchor.constraint(equalTo: fullName.centerYAnchor),
+        
+        ]))
     }
 }

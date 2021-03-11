@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF32723C25F91326003BB2DE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32723B25F91326003BB2DE /* SearchViewController.swift */; };
+		CF32724525FA0711003BB2DE /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32724425FA0711003BB2DE /* Header.swift */; };
 		CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */; };
 		CFBF3B9325EC5D0A005C4F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFBF3B9225EC5D0A005C4F85 /* Assets.xcassets */; };
 		CFBF3BA125EC5D0B005C4F85 /* SportManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF3BA025EC5D0B005C4F85 /* SportManagerTests.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF32723B25F91326003BB2DE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CF32724425FA0711003BB2DE /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		CFBF3B8625EC5D07005C4F85 /* SportManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBF3B8925EC5D07005C4F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFBF3B9225EC5D0A005C4F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				CFBF3BC925EC67B9005C4F85 /* MainViewController.swift */,
+				CF32724425FA0711003BB2DE /* Header.swift */,
+				CF32723B25F91326003BB2DE /* SearchViewController.swift */,
 				CFBF3BCE25EC67C8005C4F85 /* PlayerViewController.swift */,
 				CFBF3BDB25EC6A0F005C4F85 /* PlayerCell.swift */,
 			);
@@ -275,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF32724525FA0711003BB2DE /* Header.swift in Sources */,
 				CFBF3BD425EC6846005C4F85 /* CoreDataManager.swift in Sources */,
+				CF32723C25F91326003BB2DE /* SearchViewController.swift in Sources */,
 				CFBF3BDC25EC6A0F005C4F85 /* PlayerCell.swift in Sources */,
 				CFBF3B8A25EC5D07005C4F85 /* AppDelegate.swift in Sources */,
 				CFBF3BC425EC6210005C4F85 /* Player.xcdatamodeld in Sources */,

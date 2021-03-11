@@ -7,13 +7,14 @@
 
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     
-    let modelName: String
+    private let modelName: String
     
     init(modelName: String) {
         self.modelName = modelName
     }
+    
     
     lazy var persistentContainer: NSPersistentContainer = {
         
@@ -55,11 +56,11 @@ class CoreDataManager {
         save(context: context)
     }
     
-    func fetchData<T: NSManagedObject>(for entity: T.Type, predicate: NSCompoundPredicate? = nil) -> [T] {
+    func fetchData<T: NSManagedObject>(for entity: T.Type, sectionNameKeyPath: String? = nil, predicate: NSCompoundPredicate? = nil) -> NSFetchedResultsController<T> {
+        
         let context = getContext()
         
         let request: NSFetchRequest<T>
-        var fetchedResult = [T]()
         
         if #available(iOS 10.0, *) {
             request = entity.fetchRequest() as! NSFetchRequest<T>
@@ -73,14 +74,17 @@ class CoreDataManager {
         request.predicate = predicate
         request.sortDescriptors = [playerSortDescriptor]
         
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+        
         do {
-            fetchedResult = try context.fetch(request)
+            
+            try controller.performFetch()
             
         } catch {
             debugPrint("Could not fetch \(error.localizedDescription)")
         }
         
-        return fetchedResult
+        return controller
     }
     
 }

@@ -12,20 +12,30 @@ class PlayerViewController: UIViewController {
     
     var dataManager: CoreDataManager!
     
-    var selectedImage = #imageLiteral(resourceName: "man")
+    var selectedImage = #imageLiteral(resourceName: "foot")
     var selectedClub: String!
     var selectedPosition: String!
     var imagePickerController = UIImagePickerController()
     var position = ["Нападающий", "Вратарь", "Защитник", "Полузащитник"]
     var teams = ["ЦСКА","Локомотив","Спартак","Зенит","Динамо","Ахмат","Крылья Своетов","Урал","Арсенал","Ростов",]
     
+    let playerStatusSegmentControl: UISegmentedControl = {
+        let segmentControl = UISegmentedControl()
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentControl.insertSegment(withTitle: "In Play", at: 0, animated: true)
+        segmentControl.insertSegment(withTitle: "Bench", at: 1, animated: true)
+        segmentControl.selectedSegmentTintColor = .systemBlue
+        segmentControl.selectedSegmentIndex = 0
+        return segmentControl
+    }()
+    
     lazy var avatarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.heightAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: CGFloat(100)).isActive = true
+        //imageView.heightAnchor.constraint(equalToConstant: CGFloat(200)).isActive = true
+        //imageView.widthAnchor.constraint(equalToConstant: CGFloat(200)).isActive = true
         imageView.backgroundColor = .darkGray
         imageView.image = selectedImage
         return imageView
@@ -198,6 +208,12 @@ class PlayerViewController: UIViewController {
         player.position = selectedPosition
         player.age = Int16((ageTextField.text! as NSString).integerValue)
         
+        switch playerStatusSegmentControl.selectedSegmentIndex {
+        case 0: player.inPlay = true
+        case 1: player.inPlay = false
+        default: break
+        }
+        
         dataManager.save(context: context)
         
         navigationController?.popViewController(animated: true)
@@ -220,17 +236,20 @@ class PlayerViewController: UIViewController {
     func setupLayout() {
         view.backgroundColor = .systemBackground
         
-        [avatarImage,uploadImageButton,nameTextField,nationalityTextField,numberTextField,ageTextField,teamLabel,positionLabel,teamPickerView,positionPickerView,saveButton,selectTeamButton,selectPositionButton].forEach {(element) in
+        [playerStatusSegmentControl,avatarImage,uploadImageButton,nameTextField,nationalityTextField,numberTextField,ageTextField,teamLabel,positionLabel,teamPickerView,positionPickerView,saveButton,selectTeamButton,selectPositionButton].forEach {(element) in
             view.addSubview(element)
         }
-        NSLayoutConstraint.activate([avatarImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+        NSLayoutConstraint.activate([playerStatusSegmentControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+                                     playerStatusSegmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+                                     playerStatusSegmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+                                     
+                                     avatarImage.topAnchor.constraint(equalTo: playerStatusSegmentControl.bottomAnchor, constant: 40),
                                      avatarImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     avatarImage.heightAnchor.constraint(equalToConstant: 100),
-                                     avatarImage.heightAnchor.constraint(equalToConstant: 100),
+                                     avatarImage.heightAnchor.constraint(equalToConstant: 200),
+                                     avatarImage.widthAnchor.constraint(equalToConstant: 200),
                                      
-                                     uploadImageButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor,constant: 20),
+                                     uploadImageButton.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 20),
                                      uploadImageButton.centerXAnchor.constraint(equalTo: avatarImage.centerXAnchor),
-                                     
                                      
                                      nameTextField.topAnchor.constraint(equalTo: uploadImageButton.bottomAnchor, constant: 20),
                                      nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
