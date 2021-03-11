@@ -8,10 +8,11 @@
 import UIKit
 import  CoreData
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
+    // MARK: - Properties
     var dataManager: CoreDataManager!
-    private var fetchedResultController: NSFetchedResultsController<Player>!
+    var fetchedResultController: NSFetchedResultsController<Player>!
     
     private var playerArray = [Player]()
     private var selectedPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [])
@@ -27,6 +28,7 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -65,12 +67,6 @@ class MainViewController: UIViewController {
         navigationItem.leftBarButtonItem = searchPlayerBarButtonItem
     }
     
-    @objc private func playerStatusSegmentControlPressed(){
-        playerArray.removeAll()
-        fetchData(predicate: selectedPredicate)
-        tableView.reloadData()
-        
-    }
     
     @objc private func pressedAddPlayer() {
         let viewController = PlayerViewController()
@@ -84,6 +80,36 @@ class MainViewController: UIViewController {
         searchViewController.modalTransitionStyle = .crossDissolve
         searchViewController.modalPresentationStyle = .overCurrentContext
         present(searchViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func playerStatusSegmentControlPressed() {
+        selectingPosition()
+        tableView.reloadData()
+    }
+    
+    private func selectingPosition() {
+        
+        switch playerStatusSegmentControl.selectedSegmentIndex {
+        
+        case 0: fetchData(predicate: selectedPredicate)
+            
+        case 1: let predicateForAdd = NSPredicate(format: "inPlay == %@", NSNumber(value: true))
+            guard var predicate = selectedPredicate.subpredicates as? [NSPredicate] else { return }
+            predicate.append(predicateForAdd)
+            let newPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicate)
+            fetchedResultController = dataManager.fetchData(for: Player.self, sectionNameKeyPath: "position", predicate: newPredicate)
+            
+        case 2:
+            let predicateForAdd = NSPredicate(format: "inPlay == %@", NSNumber(value: false))
+            guard var predicate = selectedPredicate.subpredicates as? [NSPredicate] else { return }
+            predicate.append(predicateForAdd)
+            let newPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicate)
+            fetchedResultController = dataManager.fetchData(for: Player.self, sectionNameKeyPath: "position", predicate: newPredicate)
+            
+        default:
+            return
+            
+        }
     }
     
     private func fetchData(predicate: NSCompoundPredicate? = nil) {
@@ -109,6 +135,7 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: - Table View Data Source
 extension MainViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -141,6 +168,7 @@ extension MainViewController: UITableViewDataSource {
     
 }
 
+// MARK: - Table View Delegate
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -165,6 +193,7 @@ extension MainViewController: UITableViewDelegate {
 }
 
 
+// MARK: - NSFetchedResultControllerDelegate
 extension MainViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
     }()
     
     let roundedView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 9
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
     }()
     
     let ageSegmentControl: UISegmentedControl = {
-       let segmentControl = UISegmentedControl()
+        let segmentControl = UISegmentedControl()
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.selectedSegmentTintColor = .systemGreen
         segmentControl.insertSegment(withTitle: ">=", at: 0, animated: true)
@@ -69,18 +69,18 @@ class SearchViewController: UIViewController {
         return label
     }()
     
-   let selectPositionButton: UIButton = {
+    let selectPositionButton: UIButton = {
         let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Select", for: .normal)
-    button.setTitleColor(.systemBlue, for: .normal)
-    button.addTarget(self, action: #selector(selectPositionButtonPressed), for: .touchUpInside)
-    return button
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Select", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(selectPositionButtonPressed), for: .touchUpInside)
+        return button
     }()
     
     private var selectTeamButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Select", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(selectTeamButtonPressed), for: .touchUpInside)
@@ -104,9 +104,9 @@ class SearchViewController: UIViewController {
         pickerView.dataSource = self
         return pickerView
     }()
- 
+    
     private let startSearchButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start Search", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -116,7 +116,7 @@ class SearchViewController: UIViewController {
     }()
     
     private let resetButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Reset", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -125,7 +125,7 @@ class SearchViewController: UIViewController {
     }()
     
     private lazy var nameTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Name contains"
         textField.textContentType = .name
@@ -135,7 +135,7 @@ class SearchViewController: UIViewController {
     }()
     
     private lazy var ageTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Age"
         textField.textContentType = .name
@@ -143,7 +143,7 @@ class SearchViewController: UIViewController {
         textField.delegate = self
         return textField
     }()
-   
+    
     // Functions
     private func startSearchingButton(){
         let compoundPredicate = makeCompoundPredicate(name: nameTextField.text!, age: ageTextField.text!, position: selectPosition, team: selectTeam)
@@ -159,7 +159,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func startSearchButtonPressed(){
-
+        
         let compoundPredicate = makeCompoundPredicate(name: nameTextField.text!, age: ageTextField.text!, position: selectPosition, team: selectTeam)
         delegate?.viewController(self, predicate: compoundPredicate)
         dismiss(animated: true, completion: nil)
@@ -198,6 +198,8 @@ class SearchViewController: UIViewController {
         startSearchButton.isHidden = false
         resetButton.isHidden = false
     }
+    
+    
     
     
     
@@ -246,7 +248,7 @@ class SearchViewController: UIViewController {
     private func setupLayout() {
         [mainView, roundedView].forEach { (element) in
             view.addSubview(element)
-    }
+        }
         [nameTextField, ageTextField, ageSegmentControl, positionLabel, selectPositionButton, teamLabel, selectTeamButton, startSearchButton, resetButton, teamPickerView, positionPickerView].forEach { (element) in
             roundedView.addSubview(element)
         }
@@ -259,20 +261,20 @@ class SearchViewController: UIViewController {
                                      mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                                      mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        
+                                     
                                      roundedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      roundedView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
                                      roundedView.heightAnchor.constraint(equalToConstant: 350),
                                      roundedView.widthAnchor.constraint(equalToConstant: roundedViewWidth),
-        
+                                     
                                      nameTextField.topAnchor.constraint(equalTo: roundedView.topAnchor, constant: inset),
                                      nameTextField.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor, constant: inset),
                                      nameTextField.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor, constant: -inset),
-        
+                                     
                                      ageTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: inset),
                                      ageTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
                                      ageTextField.widthAnchor.constraint(equalToConstant: ageTextFieldWidth),
-        
+                                     
                                      ageSegmentControl.topAnchor.constraint(equalTo: ageTextField.topAnchor),
                                      ageSegmentControl.leadingAnchor.constraint(equalTo: ageTextField.trailingAnchor, constant: 5),
                                      ageSegmentControl.bottomAnchor.constraint(equalTo: ageTextField.bottomAnchor),
@@ -303,7 +305,7 @@ class SearchViewController: UIViewController {
                                      positionPickerView.centerXAnchor.constraint(equalTo: roundedView.centerXAnchor)
         ])
     }
-        
+    
 }
 
 extension SearchViewController: UITextFieldDelegate {

@@ -80,7 +80,7 @@ class PlayerCell: UITableViewCell {
     }()
     
     let playerStatusLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         return label
@@ -133,8 +133,8 @@ class PlayerCell: UITableViewCell {
         number.text = "\(model.number)"
         avatar.image = UIImage(data: model.image ?? Data())
         fullName.text = model.fullName
-        teamDescriptionLabel.text = model.team
-        positionDescriptionLabel.text = model.position
+        teamDescriptionLabel.text = (model.team != nil) ? "\(model.team!)" : "—"
+        positionDescriptionLabel.text = (model.position != nil) ? "\(model.position!)" : "—"
         ageDescriptionLabel.text = "\(model.age)"
         nationalityDescriptionLabel.text = model.nationality
         playerStatusLabel.text = model.inPlay ? "In Play" : "Bench"
