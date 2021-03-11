@@ -7,13 +7,17 @@
 
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     
-    let modelName: String
+    // MARK: - Private Properties
+    private let modelName: String
     
+    // MARK: - Initializers
     init(modelName: String) {
         self.modelName = modelName
     }
+    
+    // MARK: - CoreData Stack initialisation
     
     lazy var persistentContainer: NSPersistentContainer = {
         
@@ -55,11 +59,11 @@ class CoreDataManager {
         save(context: context)
     }
     
-    func fetchData<T: NSManagedObject>(for entity: T.Type, predicate: NSCompoundPredicate? = nil) -> [T] {
+    func fetchData<T: NSManagedObject>(for entity: T.Type, sectionNameKeyPath: String? = nil, predicate: NSCompoundPredicate? = nil) -> NSFetchedResultsController<T> {
+        
         let context = getContext()
         
         let request: NSFetchRequest<T>
-        var fetchedResult = [T]()
         
         if #available(iOS 10.0, *) {
             request = entity.fetchRequest() as! NSFetchRequest<T>
@@ -68,19 +72,28 @@ class CoreDataManager {
             request = NSFetchRequest(entityName: entityName)
         }
         
-        let playerSortDescriptor = NSSortDescriptor(key: "fullName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+        let playerSortDescriptor = NSSortDescriptor(key: "position", ascending: true)
         
         request.predicate = predicate
         request.sortDescriptors = [playerSortDescriptor]
         
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
+        
         do {
-            fetchedResult = try context.fetch(request)
+//            fetchedResult = try context.fetch(request)
+            try controller.performFetch()
             
         } catch {
             debugPrint("Could not fetch \(error.localizedDescription)")
         }
         
-        return fetchedResult
+        return controller
+    }
+    
+    func replacePlayer(player: Player, status: Bool) {
+        let context = getContext()
+        player.inPlay = !status
+        save(context: context)
     }
     
 }
