@@ -11,6 +11,7 @@ import CoreData
 class PlayerViewController: UIViewController {
     
     var dataManager: CoreDataManager!
+    var player: Player?
     
     var selectedImage = #imageLiteral(resourceName: "foot")
     var selectedClub: String!
@@ -190,6 +191,42 @@ class PlayerViewController: UIViewController {
         
         saveButton.isEnabled = !name.isEmpty && !number.isEmpty && !age.isEmpty && !nationality.isEmpty
         saveButton.alpha = saveButton.isEnabled ? 1:0.3
+    }
+
+    private func checkTeamAndPositionIsEmpty() {
+        guard let team = selectedClub,
+              let position = selectedPosition else { return }
+
+        saveButton.isEnabled = !team.isEmpty && !position.isEmpty
+        saveButton.alpha = saveButton.isEnabled ? 1 : 0.3
+    }
+
+
+// public method
+    func setupProperties() {
+
+        guard let data = player?.image,
+              let image = UIImage(data: data) else { return }
+        selectedImage = image
+        avatarImage.image = selectedImage
+
+        nameTextField.text = player?.fullName
+        numberTextField.text = "\(player?.number ?? 0)"
+        nationalityTextField.text = player?.nationality
+        ageTextField.text = "\(player?.age ?? 0)"
+
+        let club = player?.club?.name
+        selectTeamButton.setTitle(club, for: .normal)
+        selectedClub = club
+
+        let position = player?.position
+        selectPositionButton.setTitle(position, for: .normal)
+        selectedPosition = position
+
+        playerStatusSegmentControl.selectedSegmentIndex = player?.inPlay ?? true ? 0 : 1
+
+        inputText()
+        checkTeamAndPositionIsEmpty()
     }
     
     @objc func saveButtonPressed() {
