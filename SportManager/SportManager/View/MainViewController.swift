@@ -168,6 +168,9 @@ extension MainViewController: UITableViewDataSource {
     
 }
 
+
+
+
 // MARK: - Table View Delegate
 extension MainViewController: UITableViewDelegate {
     
@@ -178,18 +181,56 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        switch editingStyle {
-        case .delete:
-            let player = fetchedResultController.object(at: indexPath)
-            dataManager.delete(object: player)
-            
-        default:
-            break
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let player = fetchedResultController.object(at: indexPath)
+        let isInPlay = player.inPlay
+
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _,_,_ in
+            guard let self = self else { return }
+
+            self.dataManager.delete(object: player)
         }
+
+        let replacementAction = UIContextualAction(style: .normal, title: isInPlay ? "To bench" : "to play") { [weak self] _,_,_ in
+
+            guard let self = self else { return }
+
+            self.dataManager.replacePlayer(player: player, status: isInPlay)
+            tableView.reloadData()
+        }
+        replacementAction.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] _,_,_ in
+
+            guard let self = self else { return }
+
+            let playerViewController = PlayerViewController()
+            playerViewController.player = player
+            playerViewController.setupProperties()
+            playerViewController.dataManager = self.dataManager
+            self.navigationController?.pushViewController(playerViewController, animated: true)
+        }
+        editAction.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+
+        let swipeActionConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, replacementAction, editAction])
+        swipeActionConfiguration.performsFirstActionWithFullSwipe = false
+
+        return swipeActionConfiguration
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        switch editingStyle {
+//        case .delete:
+//            let player = fetchedResultController.object(at: indexPath)
+//            dataManager.delete(object: player)
+//
+//        default:
+//            break
+//        }
+
 }
 
 
@@ -258,3 +299,4 @@ extension MainViewController: SearchDelegate {
         tableView.reloadData()
     }
 }
+
